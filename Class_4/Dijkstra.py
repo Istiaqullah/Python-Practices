@@ -1,17 +1,9 @@
 import heapq
-from heapq import heappush
-
-
 def dijkstra(graph,start,end):
     pq=[]
     heapq.heappush(pq,(0,start))
 
     parent={node: None for node in graph.keys()}
-
-
-   # distance={}
-   # for node in graph.keys():
-   #     distance[node]=float('inf')
     distance={node: float('inf') for node in graph.keys()}
     distance[start]=0
     visited=set()
@@ -27,7 +19,7 @@ def dijkstra(graph,start,end):
             if temp_distance<distance[neighbor]:
                 distance[neighbor]=temp_distance
                 parent[neighbor]=current
-                heapq,heappush(pq,(temp_distance,neighbor))
+                heapq.heappush(pq,(temp_distance,neighbor))
 
     p = []
     node = end
@@ -47,7 +39,7 @@ graph={
 
 }
 start='A'
-end='C'
+end='D'
 ans,dist,path=dijkstra(graph,start,end)
 print(ans)
 print("Shortest distance:", dist)
